@@ -1,3 +1,6 @@
+// TODO: Need full refactoring
+// ----------------------------------
+
 if (document.getElementsByClassName("c87")) {
     function update(index) {
         let div = document.querySelector(".number-of-position");
@@ -28,11 +31,8 @@ if (document.getElementsByClassName("c87")) {
             tr.style.background = "#d8baffad";
         }
 
-        let arrayToIndex = arrayTrs.filter((x, i) => i <= trIndex);
+        let arrayToIndex = arrayTrs.filter((_, i) => i <= trIndex);
         let noNeedArrayTrs = arrayToIndex.filter((x) => (x.children[2]).children[0].innerHTML > 1);
-
-        // let noNeedPersonsArray = arrayToIndex.filter((x) => (x.children[0]).innerHTML == "Головкин Никита");
-        // noNeedArrayTrs.push(noNeedPersonsArray[0]);
 
         noNeedArrayTrs.map((x) => x.style.color = "lightgray");
 
@@ -54,20 +54,20 @@ if (document.getElementsByClassName("c87")) {
             if (currentPosition === 0) {
                 currentPosition = position;
                 if (object.trIndex > 0 && currentPosition <= 5) {
-                    sendBotMessage(botToken, chatId, `Изменился номер: ${currentPosition}`);
+                    sendBotMessage(TOKEN, CHAT_ID, `Изменился номер: ${currentPosition}`);
                     // console.log(`Изменился номер: ${currentPosition}`)
                 }
             } else {
                 if (currentPosition !== position) {
                     currentPosition = position;
                     if (currentPosition > 2 && currentPosition <= 5) {
-                        sendBotMessage(botToken, chatId, `Изменился номер: ${currentPosition}`);
+                        sendBotMessage(TOKEN, CHAT_ID, `Изменился номер: ${currentPosition}`);
                         // console.log(`Изменился номер: ${currentPosition}`)
                     } else if (currentPosition === 2) {
-                        sendBotMessage(botToken, chatId, `Изменился номер: ${currentPosition}.\nНужно быть за рабочим местом!`);
+                        sendBotMessage(TOKEN, CHAT_ID, `Изменился номер: ${currentPosition}.\nНужно быть за рабочим местом!`);
                         // console.log(`Изменился номер: ${currentPosition}.\nНужно быть за рабочим местом!`)
                     } else if (currentPosition === 1) {
-                        sendBotMessage(botToken, chatId, `Ты первая в очереди!`);
+                        sendBotMessage(TOKEN, CHAT_ID, `Ты первая в очереди!`);
                         // console.log('Ты первая в очереди!')
                     }
                 }
@@ -79,24 +79,8 @@ if (document.getElementsByClassName("c87")) {
 
     observer.observe(target, config);
 
-    // let statusTarget = document.querySelector('.c78');
-    // if (statusTarget) {
-    //     console.log(statusTarget);
-    //     let statusObserver = new MutationObserver(function (mutations) {
-    //         mutations.forEach(function (mutation) {
-    //             console.log(mutation.type)
-    //         });
-    //     });
-
-    //     let statusConfig = { characterData: false, attributes: false, childList: true, subtree: false };
-
-    //     statusObserver.observe(statusTarget, statusConfig);
-    // } else {
-    //     console.log('Элемента с классом ".c78" не существует');
-    // }
-
-    const chatId = "-861019582";
-    const botToken = "5616522692:AAF1fVepraK6vCbV-jPf2A8hANHAhSYmYz8";
+    const CHAT_ID = "-861019582";
+    const TOKEN = "5616522692:AAF1fVepraK6vCbV-jPf2A8hANHAhSYmYz8";
 
     async function sendBotMessage(botToken, chatId, text) {
         let url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}parse_mode=HTML&text=${encodeURIComponent(

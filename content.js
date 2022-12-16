@@ -48,7 +48,7 @@ if (document.getElementsByClassName("c87")) {
 
     let currentPosition = 0;
     let observer = new MutationObserver(function (mutations) {
-        mutations.forEach(function (mutation) {
+        mutations.forEach(function () {
             let object = getNumber();
             let position = object.current;
             if (currentPosition === 0) {

@@ -32,7 +32,7 @@ if (document.getElementsByClassName("c87")) {
         }
 
         let arrayToIndex = arrayTrs.filter((_, i) => i <= trIndex);
-        let noNeedArrayTrs = arrayToIndex.filter((x) => (x.children[2]).children[0].innerHTML > 1);
+        let noNeedArrayTrs = arrayToIndex.filter((x) => (x.children[2]).children[0].innerHTML > 2);
 
         noNeedArrayTrs.map((x) => x.style.color = "lightgray");
 

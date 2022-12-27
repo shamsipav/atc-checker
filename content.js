@@ -31,8 +31,8 @@ if (document.getElementsByClassName("c87")) {
             tr.style.background = "#d8baffad";
         }
 
-        let arrayToIndex = arrayTrs.filter((_, i) => i <= trIndex);
-        let noNeedArrayTrs = arrayToIndex.filter((x) => (x.children[2]).children[0].innerHTML > 2);
+        let arrayToIndex = arrayTrs.filter((_, i) => i < trIndex);
+        let noNeedArrayTrs = arrayToIndex.filter(x => (x.children[2]).children[0].innerHTML > 2 || (x.children[2]).children[0].innerHTML == 1);
 
         noNeedArrayTrs.map((x) => x.style.color = "lightgray");
 

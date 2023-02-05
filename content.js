@@ -56,6 +56,9 @@ if (document.getElementsByClassName("c87")) {
                 if (object.trIndex > 0 && currentPosition <= 5) {
                     sendBotMessage(TOKEN, CHAT_ID, `Изменился номер: ${currentPosition}`);
                     // console.log(`Изменился номер: ${currentPosition}`)
+                } else if (object.trIndex == 0) {
+                    sendBotMessage(TOKEN, CHAT_ID, `Ты первая в очереди!`);
+                    // console.log('Ты первая в очереди!')
                 }
             } else {
                 if (currentPosition !== position) {
